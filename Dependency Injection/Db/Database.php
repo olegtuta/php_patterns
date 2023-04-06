@@ -5,7 +5,8 @@ namespace Db;
 use Contracts\DatabaseConfigInterface;
 use PDO;
 
-class Database {
+class Database
+{
     private $config;
 
     /**
@@ -13,7 +14,8 @@ class Database {
      *
      * @param DatabaseConfigInterface $config
      */
-    public function __construct(DatabaseConfigInterface $config) {
+    public function __construct(DatabaseConfigInterface $config)
+    {
         $this->config = $config;
     }
 
@@ -22,18 +24,25 @@ class Database {
      *
      * @return PDO
      */
-    public function connect() {
-        $dsn = sprintf('mysql:host=%s;dbname=%s;charset=utf8',
+    public function connect()
+    {
+        $dsn = sprintf(
+            'mysql:host=%s;dbname=%s;charset=utf8',
             $this->config->getHost(),
             $this->config->getDatabase()
         );
 
         $options = [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES => false,
+            PDO::ATTR_EMULATE_PREPARES   => false,
         ];
 
-        return new PDO($dsn, $this->config->getUsername(), $this->config->getPassword(), $options);
+        return new PDO(
+            $dsn,
+            $this->config->getUsername(),
+            $this->config->getPassword(),
+            $options
+        );
     }
 }

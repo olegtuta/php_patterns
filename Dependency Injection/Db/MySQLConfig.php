@@ -4,7 +4,8 @@ namespace Db;
 
 use Contracts\DatabaseConfigInterface;
 
-class MySQLConfig implements DatabaseConfigInterface {
+class MySQLConfig implements DatabaseConfigInterface
+{
     private $host;
     private $database;
     private $username;
@@ -17,8 +18,13 @@ class MySQLConfig implements DatabaseConfigInterface {
      * @param $username
      * @param $password
      */
-    public function __construct($host, $database, $username, $password) {
-        $this->host = $host;
+    public function __construct(
+        $host,
+        $database,
+        $username,
+        $password
+    ) {
+        $this->host     = $host;
         $this->database = $database;
         $this->username = $username;
         $this->password = $password;
@@ -29,7 +35,8 @@ class MySQLConfig implements DatabaseConfigInterface {
      *
      * @return mixed
      */
-    public function getHost() {
+    public function getHost()
+    {
         return $this->host;
     }
 
@@ -38,7 +45,8 @@ class MySQLConfig implements DatabaseConfigInterface {
      *
      * @return mixed
      */
-    public function getDatabase() {
+    public function getDatabase()
+    {
         return $this->database;
     }
 
@@ -47,7 +55,8 @@ class MySQLConfig implements DatabaseConfigInterface {
      *
      * @return mixed
      */
-    public function getUsername() {
+    public function getUsername()
+    {
         return $this->username;
     }
 
@@ -56,7 +65,8 @@ class MySQLConfig implements DatabaseConfigInterface {
      *
      * @return mixed
      */
-    public function getPassword() {
+    public function getPassword()
+    {
         return $this->password;
     }
 }
